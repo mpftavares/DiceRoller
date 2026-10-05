@@ -25,7 +25,7 @@ fun NavGraph (navController: NavHostController, modifier: Modifier) {
         }
         composable ( route = Screens.DiceResult.route ) { navBackStack ->
             val param: Int = navBackStack.arguments?.getString("result")?.toIntOrNull() ?: 1
-            DiceResult(navController = navController, modifier = modifier, screen = param, result = result,  onResultChange = { result })
+            DiceResult(navController = navController, modifier = modifier, screen = param, result = result,  onResultChange = { result = it})
         }
     }
 }
