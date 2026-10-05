@@ -55,9 +55,16 @@ fun DiceRollerApp() {
 }
 
 @Composable
-fun DiceRollerScreen(navController: NavController, modifier: Modifier = Modifier) {
+fun DiceRollerScreen(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    result: Int = 1,
+    onResultChange: (Int) -> Unit,
+) {
     DiceWithButtonAndImage(
         navController,
+        result = result,
+        onResultChange = onResultChange,
         modifier = modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.Center)
@@ -67,10 +74,10 @@ fun DiceRollerScreen(navController: NavController, modifier: Modifier = Modifier
 @Composable
 fun DiceWithButtonAndImage(
     navController: NavController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    result: Int = 1,
+    onResultChange: (Int) -> Unit,
 ) {
-    var result by remember { mutableIntStateOf(1) }
-
     val imageResource = when (result) {
         1 -> R.drawable.dice_1
         2 -> R.drawable.dice_2
@@ -87,7 +94,7 @@ fun DiceWithButtonAndImage(
         )
         Spacer(modifier = Modifier.padding(16.dp))
         Button(onClick = {
-            result = (1..6).random()
+            onResultChange((1..6).random())
         }) {
             Text(stringResource(R.string.roll), fontSize = 24.sp)
         }
