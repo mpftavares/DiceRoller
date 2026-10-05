@@ -37,6 +37,11 @@ fun DiceResult(navController: NavController, modifier: Modifier = Modifier, scre
         5 -> R.drawable.dice_5
         else -> R.drawable.dice_6
     }
+
+    fun onGoToScreen(x: Int) {
+        navController.navigate(Screens.DiceResult.route.replace("{result}", x.toString()))
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -49,9 +54,7 @@ fun DiceResult(navController: NavController, modifier: Modifier = Modifier, scre
             painter = painterResource(imageResource),
             contentDescription = result.toString()
         )
-        ResultComponent(screen = screen, result, onResultChange = onResultChange, onGoToScreen = { x ->
-            navController.navigate(Screens.DiceResult.route.replace("{result}", x.toString()))
-        })
+        ResultComponent(screen = screen, result, onResultChange = onResultChange, onGoToScreen = ::onGoToScreen)
         Spacer(modifier.padding(12.dp))
         Button(onClick = { navController.navigate(Screens.Roll.route) }) {
             Text(stringResource(R.string.back), fontSize = 24.sp)
