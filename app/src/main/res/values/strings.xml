@@ -2,6 +2,7 @@
     <string name="app_name">Dice Roller</string>
     <string name="roll">Roll</string>
     <string name="back">Back</string>
+    <string name="go_to_result">Go to result</string>
     <string name="result">Result</string>
     <string name="fav_travel_destination">Favorite Travel Destination</string>
     <string name="travel_destination">Picos da Europa</string>

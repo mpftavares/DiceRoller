@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,7 +25,6 @@ import com.example.diceroller.ui.theme.DiceRollerTheme
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -90,6 +88,10 @@ fun DiceWithButtonAndImage(
         Spacer(modifier = Modifier.padding(16.dp))
         Button(onClick = {
             result = (1..6).random()
+        }) {
+            Text(stringResource(R.string.roll), fontSize = 24.sp)
+        }
+        Button(onClick = {
             navController.navigate(
                 Screens.DiceResult.route.replace(
                     oldValue = "{result}",
@@ -97,7 +99,7 @@ fun DiceWithButtonAndImage(
                 )
             )
         }) {
-            Text(stringResource(R.string.roll), fontSize = 24.sp)
+            Text(stringResource(R.string.go_to_result), fontSize = 24.sp)
         }
     }
 }
