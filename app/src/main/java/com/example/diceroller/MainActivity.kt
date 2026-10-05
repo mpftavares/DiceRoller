@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.diceroller.navigation.NavGraph
 import com.example.diceroller.navigation.Screens
+import com.example.diceroller.helpers.diceImage
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,18 +75,9 @@ fun DiceWithButtonAndImage(
     result: Int = 1,
     onResultChange: (Int) -> Unit,
 ) {
-    val imageResource = when (result) {
-        1 -> R.drawable.dice_1
-        2 -> R.drawable.dice_2
-        3 -> R.drawable.dice_3
-        4 -> R.drawable.dice_4
-        5 -> R.drawable.dice_5
-        else -> R.drawable.dice_6
-    }
-
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
-            painter = painterResource(imageResource),
+            painter = painterResource(diceImage(result)),
             contentDescription = result.toString()
         )
         Spacer(modifier = Modifier.padding(16.dp))
