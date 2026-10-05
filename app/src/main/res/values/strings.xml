@@ -2,4 +2,12 @@
     <string name="app_name">Dice Roller</string>
     <string name="roll">Roll</string>
     <string name="back">Back</string>
+    <string name="result">Result</string>
+    <string name="fav_travel_destination">Favorite Travel Destination</string>
+    <string name="travel_destination">Picos da Europa</string>
+    <string name="temperature">Temperature</string>
+    <string name="refresh_temperature">Refresh Temperature</string>
+    <string name="increment_by">Increment by</string>
+    <string name="go_to_screen">Go to screen %d</string>
+    <string name="update_dice_value">Update Dice Value</string>
 </resources>
