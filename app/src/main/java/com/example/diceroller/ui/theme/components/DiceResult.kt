@@ -16,11 +16,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.diceroller.R
 import com.example.diceroller.helpers.diceImage
-import com.example.diceroller.navigation.Screens
 import com.example.diceroller.ui.theme.components.results.Five
 import com.example.diceroller.ui.theme.components.results.Four
 import com.example.diceroller.ui.theme.components.results.One
@@ -29,12 +26,14 @@ import com.example.diceroller.ui.theme.components.results.Three
 import com.example.diceroller.ui.theme.components.results.Two
 
 @Composable
-fun DiceResult(navController: NavController, modifier: Modifier = Modifier, screen: Int = 1, result: Int = 1, onResultChange: (Int) -> Unit) {
-
-    fun onGoToScreen(x: Int) {
-        navController.navigate(Screens.DiceResult.route.replace("{result}", x.toString()))
-    }
-
+fun DiceResult(
+    modifier: Modifier = Modifier,
+    screen: Int = 1,
+    result: Int = 1,
+    onResultChange: (Int) -> Unit,
+    onGoToScreen: (Int) -> Unit,
+    onBack: () -> Unit,
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -53,10 +52,10 @@ fun DiceResult(navController: NavController, modifier: Modifier = Modifier, scre
             screen = screen,
             result = result,
             onResultChange = onResultChange,
-            onGoToScreen = ::onGoToScreen
+            onGoToScreen = onGoToScreen
         )
         Spacer(modifier.padding(12.dp))
-        Button(onClick = { navController.navigate(Screens.Roll.route) }) {
+        Button(onClick = onBack) {
             Text(stringResource(R.string.back), fontSize = 24.sp)
         }
     }
@@ -83,6 +82,5 @@ fun ResultComponent(
 @Preview
 @Composable
 fun DiceResultPreview() {
-    val navController = rememberNavController()
-    DiceResult(navController = navController, modifier = Modifier, screen = 1, result = 1, onResultChange = {})
+    DiceResult(screen = 1, result = 1, onResultChange = {}, onGoToScreen = {}, onBack = {})
 }
