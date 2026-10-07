@@ -7,8 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -33,21 +36,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DiceRollerApp()
+            DiceRollerTheme {
+                DiceRollerApp()
+            }
         }
     }
 }
 
 @Composable
 fun DiceRollerApp() {
-    DiceRollerTheme {
-        val navController = rememberNavController()
-        Scaffold(
+    val navController = rememberNavController()
+    Scaffold(contentWindowInsets = WindowInsets.safeDrawing) { innerPadding ->
+        NavGraph(
+            navController = navController,
             modifier = Modifier
                 .fillMaxSize()
-        ) { innerPadding ->
-            NavGraph(navController = navController, modifier = Modifier.padding(innerPadding))
-        }
+                .padding(innerPadding)
+                .consumeWindowInsets(innerPadding)
+        )
     }
 }
 
