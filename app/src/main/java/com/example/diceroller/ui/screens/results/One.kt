@@ -17,7 +17,6 @@ import com.example.diceroller.R
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -35,15 +34,15 @@ fun One(result: Int = 1) {
     ) {
         Text(
             stringResource(R.string.fav_travel_destination),
-            color = Color.White
+            color = MaterialTheme.colorScheme.onSecondary
         )
         Text(
             stringResource(R.string.travel_destination),
-            color = Color.White
+            color = MaterialTheme.colorScheme.onSecondary
         )
         Text(
             stringResource(R.string.temperature) + ": " + temperature + 'º',
-            color = Color.White
+            color = MaterialTheme.colorScheme.onSecondary
         )
         Button(onClick = { temperature = (-10..30).random() }) {
             Text(stringResource(R.string.refresh_temperature))
