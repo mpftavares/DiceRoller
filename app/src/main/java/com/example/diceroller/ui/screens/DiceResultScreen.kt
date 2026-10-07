@@ -1,4 +1,4 @@
-package com.example.diceroller.ui.theme.components
+package com.example.diceroller.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -18,12 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.diceroller.R
 import com.example.diceroller.helpers.diceImage
-import com.example.diceroller.ui.theme.components.results.Five
-import com.example.diceroller.ui.theme.components.results.Four
-import com.example.diceroller.ui.theme.components.results.One
-import com.example.diceroller.ui.theme.components.results.Six
-import com.example.diceroller.ui.theme.components.results.Three
-import com.example.diceroller.ui.theme.components.results.Two
+import com.example.diceroller.ui.screens.results.Five
+import com.example.diceroller.ui.screens.results.Four
+import com.example.diceroller.ui.screens.results.One
+import com.example.diceroller.ui.screens.results.Six
+import com.example.diceroller.ui.screens.results.Three
+import com.example.diceroller.ui.screens.results.Two
 
 @Composable
 fun DiceResult(

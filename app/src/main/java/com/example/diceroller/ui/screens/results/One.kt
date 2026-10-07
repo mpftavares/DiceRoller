@@ -1,4 +1,4 @@
-package com.example.diceroller.ui.theme.components.results
+package com.example.diceroller.ui.screens.results
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

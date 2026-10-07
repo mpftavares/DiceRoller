@@ -7,8 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.diceroller.ui.theme.components.DiceResult
-import com.example.diceroller.DiceRollerScreen
+import com.example.diceroller.ui.screens.DiceResult
+import com.example.diceroller.ui.screens.DiceRollerScreen
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 
