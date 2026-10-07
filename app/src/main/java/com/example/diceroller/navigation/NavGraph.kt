@@ -15,17 +15,27 @@ import androidx.compose.runtime.setValue
 @Composable
 fun NavGraph (navController: NavHostController, modifier: Modifier) {
     var result by rememberSaveable() { mutableIntStateOf(1) }
+    val goToScreen: (Int) -> Unit = {
+        navController.navigate(Screens.DiceResult.route.replace("{result}", it.toString()))
+    }
 
     NavHost(
         navController = navController,
         startDestination = Screens.Roll.route
     ) {
         composable(route = Screens.Roll.route){
-            DiceRollerScreen(navController = navController, result = result, onResultChange = { result = it }, modifier = modifier)
+            DiceRollerScreen(result = result, onResultChange = { result = it }, onShowResult = goToScreen, modifier = modifier)
         }
         composable ( route = Screens.DiceResult.route ) { navBackStack ->
             val param: Int = navBackStack.arguments?.getString("result")?.toIntOrNull() ?: 1
-            DiceResult(navController = navController, modifier = modifier, screen = param, result = result,  onResultChange = { result = it})
+            DiceResult(
+                modifier = modifier,
+                screen = param,
+                result = result,
+                onResultChange = { result = it },
+                onGoToScreen = goToScreen,
+                onBack = { navController.navigate(Screens.Roll.route) },
+            )
         }
     }
 }

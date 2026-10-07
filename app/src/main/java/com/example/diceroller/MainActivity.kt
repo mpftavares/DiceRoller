@@ -25,10 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.diceroller.ui.theme.DiceRollerTheme
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.diceroller.navigation.NavGraph
-import com.example.diceroller.navigation.Screens
 import com.example.diceroller.helpers.diceImage
 
 class MainActivity : ComponentActivity() {
@@ -59,15 +57,15 @@ fun DiceRollerApp() {
 
 @Composable
 fun DiceRollerScreen(
-    navController: NavController,
     modifier: Modifier = Modifier,
     result: Int = 1,
     onResultChange: (Int) -> Unit,
+    onShowResult: (Int) -> Unit,
 ) {
     DiceWithButtonAndImage(
-        navController,
         result = result,
         onResultChange = onResultChange,
+        onShowResult = onShowResult,
         modifier = modifier
             .fillMaxSize()
             .wrapContentSize(Alignment.Center)
@@ -76,10 +74,10 @@ fun DiceRollerScreen(
 
 @Composable
 fun DiceWithButtonAndImage(
-    navController: NavController,
     modifier: Modifier = Modifier,
     result: Int = 1,
     onResultChange: (Int) -> Unit,
+    onShowResult: (Int) -> Unit,
 ) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
@@ -92,14 +90,7 @@ fun DiceWithButtonAndImage(
         }) {
             Text(stringResource(R.string.roll), fontSize = 24.sp)
         }
-        Button(onClick = {
-            navController.navigate(
-                Screens.DiceResult.route.replace(
-                    oldValue = "{result}",
-                    newValue = result.toString()
-                )
-            )
-        }) {
+        Button(onClick = { onShowResult(result) }) {
             Text(stringResource(R.string.go_to_result), fontSize = 24.sp)
         }
     }
