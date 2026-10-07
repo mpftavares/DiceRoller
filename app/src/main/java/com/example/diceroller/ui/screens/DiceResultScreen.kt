@@ -54,7 +54,7 @@ fun DiceResult(
             onResultChange = onResultChange,
             onGoToScreen = onGoToScreen
         )
-        Spacer(modifier.padding(12.dp))
+        Spacer(Modifier.padding(12.dp))
         Button(onClick = onBack) {
             Text(stringResource(R.string.back), fontSize = 24.sp)
         }

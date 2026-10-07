@@ -17,7 +17,6 @@ import com.example.diceroller.R
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -27,8 +26,7 @@ fun One(result: Int = 1) {
 
     Column(
         modifier = Modifier
-            .background(MaterialTheme.colorScheme.secondary)
-            .clip(RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(16.dp))
             .padding(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)
